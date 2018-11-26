@@ -7,7 +7,7 @@
  #     - Users choice : (human or computer)
  #             . User1 : 1) rock, 2) paper, 3)scissors
  #             . User2 : 1) rock, 2) paper, 3)scissors
- #     - Battle : loop
+ #     - Battle : loop => New class instead of Element?
  #                   .. rock vs rock : rock == rock
  #                   .. rock vs paper : rock < paper
  #                   .. rock vs scissors : rock > scissors
