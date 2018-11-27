@@ -10,6 +10,10 @@ class Rules
     @paper
   end
 
+  def winner(element1, element2)
+    
+  end
+
   def paper_winner(paper)
     case paper
       when "paper"
