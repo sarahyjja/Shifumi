@@ -71,4 +71,3 @@ class Rules
 
   end
 end
-end
