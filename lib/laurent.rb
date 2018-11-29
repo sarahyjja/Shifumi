@@ -26,7 +26,7 @@ class Game
     end
   end
 end
-
+ 
 class Player
   def initialize(name)
     @name = name
