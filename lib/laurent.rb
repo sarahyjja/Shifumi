@@ -1,8 +1,10 @@
 
 class Game
-  def initialize(player1, player2)
+  def initialize(player1, player2, input = $stdin, output = $stdout)
     @player1 = player1
     @player2 = player2
+    @input = input
+    @output = output
   end
   def player1
     @player1
@@ -25,8 +27,18 @@ class Game
       return "draw"
     end
   end
+  def input
+    @input.gets.chomp
+  end
+  def display_winner(winning_move)
+   if @input = "rock" && "scissors"
+     return @output.puts ("Rock wins\n")
+   elsif @input = "paper" && "scissors"
+     return @output.puts ("Scissors wins\n")
+    end
+  end
 end
- 
+
 class Player
   def initialize(name)
     @name = name
