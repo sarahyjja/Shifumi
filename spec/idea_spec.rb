@@ -8,11 +8,12 @@ RSpec.describe Shifumi do
 
     game = Shifumi.new
 
+    game.extend(form)
     game.player1.form(["rock", "paper", "scissors"])
     game.player2.form(["rock", "paper", "scissors"])
 
     player1.winner_move("paper")
 
-    expect(game.winner_move.display_result).to eq(player1)
+    expect(game.winner_move.display_result(result)).to eq(player1)
   end
 end
