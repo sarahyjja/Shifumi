@@ -5,6 +5,7 @@ class Game
     @player2 = player2
     @input = input
     @output = output
+    @moves = []
   end
 
   def player1
@@ -14,26 +15,69 @@ class Game
   def player2
     @player2
   end
+  def start
+    puts "SHIFUMI"
+    puts "Set up 2 players."
+    name = @input.gets.chomp
+    puts "#{name} is player 1"
+    @player1 = name
+    name = @input.gets.chomp
+    @player2 = name
+    puts "#{name} is player 2"
+    puts "Lets start the game!"
+  end
+
+  def convert_input_to_move
+    choice = gets.chomp
+    case choice
+    when "q", "p"
+      @moves.push("paper")
+    when "a", "l"
+      @moves.push("rock")
+    when "z", "m"
+      @moves.push("scissors")
+      #return "scissors"
+    else
+      puts "Not valid"
+      convert_input_to_move
+    end
+  end
 
   def input
     @input.gets.chomp
   end
 
+  def ask_for_move(player)
+    puts "#{player}"
+    puts "Choose in between :"
+    puts "Q or P for paper"
+    puts "A or L for rock"
+    puts "Z or M for scissors"
+  end
+
+  def start_new_game
+    start
+    ask_for_move(@player1)
+    convert_input_to_move
+    ask_for_move(@player2)
+    convert_input_to_move
+    winning_move(@moves)
+  end
+
   def winning_move(moves)
     if moves.include?("paper") && moves.include?("rock")
-      return "Paper wins\n"
+      puts "Paper wins\n"
     elsif moves.include?("scissors") && moves.include?("rock")
-      return "Rock wins\n"
+      puts "Rock wins\n"
     elsif moves.include?("scissors") && moves.include?("paper")
-      return "Scissors wins\n"
+      puts "Scissors wins\n"
     elsif moves.include?("paper") && moves.include?("paper")
-      return "Draw! No winner\n"
+      puts "Draw! No winner\n"
     elsif moves.include?("rock") && moves.include?("rock")
-      return "Draw! No winner\n"
+      puts "Draw! No winner\n"
     elsif moves.include?("scissors") && moves.include?("scissors")
-      return "Draw! No winner\n"
+      puts "Draw! No winner\n"
     end
-    return @output.to_s
   end
 
 end

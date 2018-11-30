@@ -145,4 +145,103 @@ RSpec.describe Game do
 
     expect(winning_move).to eq("Draw! No winner\n")
   end
+
+  it 'converts q to paper' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    paper = game.convert_input_to_move
+
+    expect(paper).to eq("paper")
+  end
+
+  it 'converts p to paper' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    paper = game.convert_input_to_move
+
+    expect(paper).to eq("paper")
+  end
+
+  it 'converts a to rock' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    rock = game.convert_input_to_move
+
+    expect(rock).to eq("rock")
+  end
+
+  it 'converts l to rock' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    rock = game.convert_input_to_move
+
+    expect(rock).to eq("rock")
+  end
+
+  it 'converts z to scissors' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    scissors = game.convert_input_to_move
+
+    expect(scissors).to eq("scissors")
+  end
+
+  it 'converts m to scissors' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    scissors = game.convert_input_to_move
+#game.convert_input_to_move
+    expect(scissors).to eq("scissors")
+    #expect(game.moves).include?("scissors")
+  end
+
+  it 'return invalid message for invalid choice' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    invalid_choice = game.convert_input_to_move
+
+    expect(invalid_choice).to eq("Not the right key")
+  end
 end
