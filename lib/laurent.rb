@@ -12,25 +12,26 @@ class Game
   def player2
     @player2
   end
-  def winning_move(moves)
-    if moves.include?("paper") && moves.include?("rock")
-      @output = "Paper wins\n"
-    elsif moves.include?("scissors") && moves.include?("rock")
-      @output = "Rock wins\n"
-    elsif moves.include?("scissors") && moves.include?("paper")
-      @output = "Scissors wins\n"
-    elsif moves.include?("paper") && moves.include?("paper")
-      return "draw"
-    elsif moves.include?("rock") && moves.include?("rock")
-      return "draw"
-    elsif moves.include?("scissors") && moves.include?("scissors")
-      return "draw"
-    end
-    return @output.to_s
-  end
   def input
     @input.gets.chomp
   end
+  def winning_move(moves)
+    if moves.include?("paper") && moves.include?("rock")
+      return "Paper wins\n"
+    elsif moves.include?("scissors") && moves.include?("rock")
+      return "Rock wins\n"
+    elsif moves.include?("scissors") && moves.include?("paper")
+      return "Scissors wins\n"
+    elsif moves.include?("paper") && moves.include?("paper")
+      return "Draw! No winner\n"
+    elsif moves.include?("rock") && moves.include?("rock")
+      return "Draw! No winner\n"
+    elsif moves.include?("scissors") && moves.include?("scissors")
+      return "Draw! No winner\n"
+    end
+    return @output.to_s
+  end
+
   # def display_winner(winning_move)
   #  if @input = ("rock" && "scissors")
   #   p @input
