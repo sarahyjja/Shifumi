@@ -27,7 +27,7 @@ RSpec.describe Game do
 
     moves = ["paper", "rock"]
 
-    expect(game.winning_move(moves)).to eq("paper")
+    expect(game.winning_move(moves)).to eq("Paper wins\n")
   end
 
   it 'says rock win against scissors' do
@@ -41,7 +41,7 @@ RSpec.describe Game do
 
     moves = ["scissors", "rock"]
 
-    expect(game.winning_move(moves)).to eq("rock")
+    expect(game.winning_move(moves)).to eq("Rock wins\n")
   end
 
   it 'says scissors win against paper' do
@@ -55,7 +55,7 @@ RSpec.describe Game do
 
     moves = ["scissors", "paper"]
 
-    expect(game.winning_move(moves)).to eq("scissors")
+    expect(game.winning_move(moves)).to eq("Scissors wins\n")
   end
 
   it 'says draw with paper and paper' do
@@ -100,7 +100,7 @@ RSpec.describe Game do
     expect(game.winning_move(moves)).to eq("draw")
   end
 
-  it 'print the winner' do
+  it 'print rock is the winner' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -111,12 +111,12 @@ RSpec.describe Game do
 
     moves = ["rock", "scissors"]
     winning_move = game.winning_move(moves)
-    game.display_winner(winning_move)
+    #game.display_winner(winning_move)
 
-    expect(output.string).to eq("Rock wins\n")
+    expect(winning_move).to eq("Rock wins\n")
   end
 
-  it 'print the winner' do
+  it 'print scissors is the winner' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -125,10 +125,10 @@ RSpec.describe Game do
 
     game = Game.new(player1, player2, input, output)
 
-    moves = ["paper", "scissors"]
+    moves = ["scissors", "paper"]
     winning_move = game.winning_move(moves)
-    game.display_winner(winning_move)
+    #game.display_winner(winning_move)
 
-    expect(output.string).to eq("Scissors wins\n")
+    expect(winning_move).to eq("Scissors wins\n")
   end
 end

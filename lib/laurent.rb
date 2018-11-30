@@ -14,11 +14,11 @@ class Game
   end
   def winning_move(moves)
     if moves.include?("paper") && moves.include?("rock")
-      return "paper"
+      @output = "Paper wins\n"
     elsif moves.include?("scissors") && moves.include?("rock")
-      return "rock"
+      @output = "Rock wins\n"
     elsif moves.include?("scissors") && moves.include?("paper")
-      return "scissors"
+      @output = "Scissors wins\n"
     elsif moves.include?("paper") && moves.include?("paper")
       return "draw"
     elsif moves.include?("rock") && moves.include?("rock")
@@ -26,17 +26,21 @@ class Game
     elsif moves.include?("scissors") && moves.include?("scissors")
       return "draw"
     end
+    return @output.to_s
   end
   def input
     @input.gets.chomp
   end
-  def display_winner(winning_move)
-   if @input = "rock" && "scissors"
-     return @output.puts ("Rock wins\n")
-   elsif @input = "paper" && "scissors"
-     return @output.puts ("Scissors wins\n")
-    end
-  end
+  # def display_winner(winning_move)
+  #  if @input = ("rock" && "scissors")
+  #   p @input
+  #   return @output.puts "Rock wins\n"
+  #   # @output.puts "Rock wins\n"
+  # elsif @input = ("scissors" && "paper") || @input = ("paper" && "scissors")
+  #    return @output.puts "Scissors wins\n"
+  # # @output.puts "Scissors wins\n"
+  #   end
+  # end
 end
 
 class Player
