@@ -1,34 +1,148 @@
 require 'game'
-# require 'player'
+require 'player'
+require 'stringio'
 
 RSpec.describe Game do
 
-  it 'says paper win against rock' do
-    playerred = Player.new
-    playerblue = Player.new
-    players = [playerred, playerblue]
+  it 'has two players with names' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
 
-    game = Game.new(players)
+    input = StringIO.new
+    output = StringIO.new
 
-    game.players[1].do_move("paper")
-    game.players[0].do_move("rock")
+    game = Game.new(player1, player2, input, output)
 
-    puts game.winner == players[1]
-    expect(game.winner).to eq(players[1])
+    expect(game.player1.name).to eq("Bob")
+    expect(game.player2.name).to eq("Cindy")
   end
 
   it 'says paper win against rock' do
-    playerred = Player.new
-    playerblue = Player.new
-    players = [playerred, playerblue]
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
 
-    game = Game.new(players)
-    move = "paper", "rock", "scissors"
+    input = StringIO.new
+    output = StringIO.new
 
-    game.players[0].do_move("paper")
-    game.players[1].do_move("rock")
+    game = Game.new(player1, player2, input, output)
 
-    puts game.winner == players[0]
-    expect(game.winner).to eq(players[0])
+    moves = ["paper", "rock"]
+
+    expect(game.winning_move(moves)).to eq("Paper wins\n")
+  end
+
+  it 'says rock win against scissors' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    moves = ["scissors", "rock"]
+
+    expect(game.winning_move(moves)).to eq("Rock wins\n")
+  end
+
+  it 'says scissors win against paper' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    moves = ["scissors", "paper"]
+
+    expect(game.winning_move(moves)).to eq("Scissors wins\n")
+  end
+
+  it 'says draw with paper and paper' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    moves = ["paper", "paper"]
+
+    expect(game.winning_move(moves)).to eq("Draw! No winner\n")
+  end
+
+  it 'says draw with rock and rock' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    moves = ["rock", "rock"]
+
+    expect(game.winning_move(moves)).to eq("Draw! No winner\n")
+  end
+
+  it 'says draw with scissors and scissors' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    moves = ["scissors", "scissors"]
+
+    expect(game.winning_move(moves)).to eq("Draw! No winner\n")
+  end
+
+  it 'print rock is the winner' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    moves = ["rock", "scissors"]
+    winning_move = game.winning_move(moves)
+
+    expect(winning_move).to eq("Rock wins\n")
+  end
+
+  it 'print scissors is the winner' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    moves = ["scissors", "paper"]
+    winning_move = game.winning_move(moves)
+
+    expect(winning_move).to eq("Scissors wins\n")
+  end
+
+  it 'print equality, no one is the winner' do
+    player1 = Player.new("Bob")
+    player2 = Player.new("Cindy")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    moves = ["scissors", "scissors"]
+    winning_move = game.winning_move(moves)
+
+    expect(winning_move).to eq("Draw! No winner\n")
   end
 end
