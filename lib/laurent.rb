@@ -6,15 +6,19 @@ class Game
     @input = input
     @output = output
   end
+
   def player1
     @player1
   end
+
   def player2
     @player2
   end
+
   def input
     @input.gets.chomp
   end
+
   def winning_move(moves)
     if moves.include?("paper") && moves.include?("rock")
       return "Paper wins\n"
@@ -32,22 +36,13 @@ class Game
     return @output.to_s
   end
 
-  # def display_winner(winning_move)
-  #  if @input = ("rock" && "scissors")
-  #   p @input
-  #   return @output.puts "Rock wins\n"
-  #   # @output.puts "Rock wins\n"
-  # elsif @input = ("scissors" && "paper") || @input = ("paper" && "scissors")
-  #    return @output.puts "Scissors wins\n"
-  # # @output.puts "Scissors wins\n"
-  #   end
-  # end
 end
 
 class Player
   def initialize(name)
     @name = name
   end
+  
   def name
     @name
   end
