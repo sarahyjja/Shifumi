@@ -21,94 +21,85 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
+    # input = StringIO.new
+    # output = StringIO.new
 
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     moves = ["paper", "rock"]
+    winning_move = game.winning_move(moves)
 
-    expect(game.winning_move(moves)).to eq("Paper wins\n")
+    expect(winning_move).to eq("Paper wins\n")
   end
 
   it 'says rock win against scissors' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
+    # input = StringIO.new
+    # output = StringIO.new
 
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     moves = ["scissors", "rock"]
+    winning_move = game.winning_move(moves)
 
-    expect(game.winning_move(moves)).to eq("Rock wins\n")
+    expect(winning_move).to eq("Rock wins\n")
   end
 
   it 'says scissors win against paper' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     moves = ["scissors", "paper"]
+    winning_move = game.winning_move(moves)
 
-    expect(game.winning_move(moves)).to eq("Scissors wins\n")
+    expect(winning_move).to eq("Scissors wins\n")
   end
 
   it 'says draw with paper and paper' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     moves = ["paper", "paper"]
+    winning_move = game.winning_move(moves)
 
-    expect(game.winning_move(moves)).to eq("Draw! No winner\n")
+    expect(winning_move).to eq("Draw! No winner\n")
   end
 
   it 'says draw with rock and rock' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     moves = ["rock", "rock"]
+    winning_move = game.winning_move(moves)
 
-    expect(game.winning_move(moves)).to eq("Draw! No winner\n")
+    expect(winning_move).to eq("Draw! No winner\n")
   end
 
   it 'says draw with scissors and scissors' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     moves = ["scissors", "scissors"]
+    winning_move = game.winning_move(moves)
 
-    expect(game.winning_move(moves)).to eq("Draw! No winner\n")
+    expect(winning_move).to eq("Draw! No winner\n")
   end
 
   it 'print rock is the winner' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     moves = ["rock", "scissors"]
     winning_move = game.winning_move(moves)
@@ -120,10 +111,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     moves = ["scissors", "paper"]
     winning_move = game.winning_move(moves)
@@ -135,10 +123,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     moves = ["scissors", "scissors"]
     winning_move = game.winning_move(moves)
@@ -150,84 +135,66 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     paper = game.convert_input_to_move
 
-    expect(paper).to eq("paper")
+    expect(paper).to eq(["paper"])
   end
 
   it 'converts p to paper' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     paper = game.convert_input_to_move
 
-    expect(paper).to eq("paper")
+    expect(paper).to eq(["paper"])
   end
 
   it 'converts a to rock' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     rock = game.convert_input_to_move
 
-    expect(rock).to eq("rock")
+    expect(rock).to eq(["rock"])
   end
 
   it 'converts l to rock' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     rock = game.convert_input_to_move
 
-    expect(rock).to eq("rock")
+    expect(rock).to eq(["rock"])
   end
 
   it 'converts z to scissors' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     scissors = game.convert_input_to_move
 
-    expect(scissors).to eq("scissors")
+    expect(scissors).to eq(["scissors"])
   end
 
   it 'converts m to scissors' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     scissors = game.convert_input_to_move
-#game.convert_input_to_move
-    expect(scissors).to eq("scissors")
+    #game.convert_input_to_move
+    expect(scissors).to eq(["scissors"])
     #expect(game.moves).include?("scissors")
   end
 
@@ -235,13 +202,10 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     invalid_choice = game.convert_input_to_move
 
-    expect(invalid_choice).to eq("Not the right key")
+    expect(invalid_choice).to eq(["Not the right key"])
   end
 end
