@@ -1,6 +1,7 @@
 require 'game'
 require 'player'
 require 'stringio'
+#require 'computer'
 
 RSpec.describe Game do
 
@@ -131,7 +132,7 @@ RSpec.describe Game do
     expect(winning_move).to eq("Draw! No winner\n")
   end
 
-  it 'converts q to paper' do
+  xit 'converts q to paper' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -142,7 +143,7 @@ RSpec.describe Game do
     expect(paper).to eq(["paper"])
   end
 
-  it 'converts p to paper' do
+  xit 'converts p to paper' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -153,7 +154,7 @@ RSpec.describe Game do
     expect(paper).to eq(["paper"])
   end
 
-  it 'converts a to rock' do
+  xit 'converts a to rock' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -164,7 +165,7 @@ RSpec.describe Game do
     expect(rock).to eq(["rock"])
   end
 
-  it 'converts l to rock' do
+  xit 'converts l to rock' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -175,7 +176,7 @@ RSpec.describe Game do
     expect(rock).to eq(["rock"])
   end
 
-  it 'converts z to scissors' do
+  xit 'converts z to scissors' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -186,7 +187,7 @@ RSpec.describe Game do
     expect(scissors).to eq(["scissors"])
   end
 
-  it 'converts m to scissors' do
+  xit 'converts m to scissors' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -198,7 +199,7 @@ RSpec.describe Game do
     #expect(game.moves).include?("scissors")
   end
 
-  it 'return invalid message for invalid choice' do
+  xit 'return invalid message for invalid choice' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -207,5 +208,18 @@ RSpec.describe Game do
     invalid_choice = game.convert_input_to_move
 
     expect(invalid_choice).to eq(["Not the right key"])
+  end
+
+  it 'add a computer player' do
+    player1 = Player.new("Bob")
+    player2 = Computer.new
+
+    # input = StringIO.new
+    # output = StringIO.new
+
+    game = Game.new(player1, player2, input, output)
+
+    expect(game.player1.name).to eq("Bob")
+    expect(game.player2).to eq(computer)
   end
 end

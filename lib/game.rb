@@ -1,11 +1,12 @@
 
 class Game
-  def initialize(player1, player2, input = $stdin, output = $stdout)
+  def initialize(player1, player2, computer, input = $stdin, output = $stdout)
     @player1 = player1
     @player2 = player2
     @input = input
     @output = output
     @moves = []
+    @computer = computer
   end
 
   def player1
@@ -14,6 +15,10 @@ class Game
 
   def player2
     @player2
+  end
+
+  def computer
+    @computer
   end
 
   def start_new_game
@@ -86,5 +91,16 @@ class Game
       return "Draw! No winner\n"
     end
   end
+end
 
+class Computer < Player
+  attr_accessor :paper, :scissors, :rock
+  def initialize(player1, player2, computer, input = $stdin, output = $stdout)
+    super(player1, player2, computer, input = $stdin, output = $stdout)
+    @computer
+  end
+
+  def choose
+    [:paper, :scissors, :rock][rand(3)]
+  end
 end
