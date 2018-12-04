@@ -1,4 +1,4 @@
-class Player
+class Player < Computer
   def initialize(name)
     @name = name
   end

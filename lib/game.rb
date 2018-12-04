@@ -93,14 +93,10 @@ class Game
   end
 end
 
-class Computer < Player
-  attr_accessor :paper, :scissors, :rock
+class Computer
+
   def initialize(player1, player2, computer, input = $stdin, output = $stdout)
     super(player1, player2, computer, input = $stdin, output = $stdout)
-    @computer
   end
 
-  def choose
-    [:paper, :scissors, :rock][rand(3)]
-  end
 end

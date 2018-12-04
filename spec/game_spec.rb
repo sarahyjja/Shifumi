@@ -212,7 +212,7 @@ RSpec.describe Game do
 
   it 'add a computer player' do
     player1 = Player.new("Bob")
-    player2 = Computer.new
+    player2 = Computer.new(player1, player2, computer, input = $stdin, output = $stdout)
 
     # input = StringIO.new
     # output = StringIO.new
