@@ -222,4 +222,24 @@ RSpec.describe Game do
     expect(game.player1.name).to eq("Bob")
     expect(game.player2.name).to eq("Jean")
   end
+
+  it 'do human player1 play rock and computer play random choice' do
+    player1 = Player.new("Bob")
+    player2 = Computer.new("Jean")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    game = Game.new(player1, player2, input = $stdin, output = $stdout)
+
+    player1 = game.convert_input_to_move
+    player2 = game.get_a_random_move(rand)
+
+    moves = ["rock", rand]
+    result = game.winning_move(moves)
+
+    #expect(rock).to eq(["rock"])
+    expect(1.upto(1).get_a_random_move).to eq([rand])
+    expect(winning_move).to eq(result)
+  end
 end

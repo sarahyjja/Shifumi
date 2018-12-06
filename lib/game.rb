@@ -55,7 +55,7 @@ class Game
   end
 
   def convert_input_to_move
-    choice = gets.chomp
+    choice = $stdin.gets.chomp
     case choice
     when "q", "p"
       @moves.push("paper")
@@ -68,6 +68,17 @@ class Game
       puts "Not valid"
       convert_input_to_move
     end
+  end
+
+  def get_a_random_move(length)
+    objects = "rock", "paper", "scissors"
+    the_move = []
+    length do
+      r = rand 0..2
+      object_move = objects[r]
+      the_move.push(object_move)
+    end
+    result = the_move
   end
 
   def winning_move(moves)
