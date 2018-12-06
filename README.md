@@ -4,13 +4,13 @@ Build a Rock Paper Scissors Game
 
 ## Core features
 
-- [] - Human Player 1 selects Rock/Paper/Scissors
-- [] - Human Player 2 selects Rock/Paper/Scissors
-- [] - Winner or tie is revealed
+- [x] - Human Player 1 selects Rock/Paper/Scissors
+- [x] - Human Player 2 selects Rock/Paper/Scissors
+- [x] - Winner or tie is revealed
 
 ## Stretch Goals
 
-- [] - Add a computer player
+- [x] - Add a computer player
 - [] - Select Human vs Human or Human vs Computer
 - [] - Select Computer vs Computer
 - [] - User can choose to play again

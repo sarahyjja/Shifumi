@@ -132,7 +132,7 @@ RSpec.describe Game do
     expect(winning_move).to eq("Draw! No winner\n")
   end
 
-  xit 'converts q to paper' do
+  it 'converts q to paper' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -143,7 +143,7 @@ RSpec.describe Game do
     expect(paper).to eq(["paper"])
   end
 
-  xit 'converts p to paper' do
+  it 'converts p to paper' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -154,7 +154,7 @@ RSpec.describe Game do
     expect(paper).to eq(["paper"])
   end
 
-  xit 'converts a to rock' do
+  it 'converts a to rock' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -165,7 +165,7 @@ RSpec.describe Game do
     expect(rock).to eq(["rock"])
   end
 
-  xit 'converts l to rock' do
+  it 'converts l to rock' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -176,7 +176,7 @@ RSpec.describe Game do
     expect(rock).to eq(["rock"])
   end
 
-  xit 'converts z to scissors' do
+  it 'converts z to scissors' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -187,7 +187,7 @@ RSpec.describe Game do
     expect(scissors).to eq(["scissors"])
   end
 
-  xit 'converts m to scissors' do
+  it 'converts m to scissors' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -199,7 +199,7 @@ RSpec.describe Game do
     #expect(game.moves).include?("scissors")
   end
 
-  xit 'return invalid message for invalid choice' do
+  it 'return invalid message for invalid choice' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
@@ -212,14 +212,14 @@ RSpec.describe Game do
 
   it 'add a computer player' do
     player1 = Player.new("Bob")
-    player2 = Computer.new
+    player2 = Computer.new("Jean")
 
     # input = StringIO.new
     # output = StringIO.new
 
-    game = Game.new(player1, player2, input, output)
+    game = Game.new(player1, player2)
 
     expect(game.player1.name).to eq("Bob")
-    expect(game.player2).to eq(computer)
+    expect(game.player2.name).to eq("Jean")
   end
 end

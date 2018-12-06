@@ -1,12 +1,12 @@
 
 class Game
-  def initialize(player1, player2, computer, input = $stdin, output = $stdout)
+  def initialize(player1, player2, input = $stdin, output = $stdout)
     @player1 = player1
     @player2 = player2
     @input = input
     @output = output
     @moves = []
-    @computer = computer
+    #@computer = computer
   end
 
   def player1
@@ -17,9 +17,9 @@ class Game
     @player2
   end
 
-  def computer
-    @computer
-  end
+  # def computer
+  #   @computer
+  # end
 
   def start_new_game
     start
@@ -93,14 +93,17 @@ class Game
   end
 end
 
-class Computer < Player
-  attr_accessor :paper, :scissors, :rock
-  def initialize(player1, player2, computer, input = $stdin, output = $stdout)
-    super(player1, player2, computer, input = $stdin, output = $stdout)
-    @computer
-  end
-
-  def choose
-    [:paper, :scissors, :rock][rand(3)]
-  end
-end
+require 'player'
+ class Computer < Player
+#    def initialize(name)
+#      super
+#       #@name = name
+# #     @computer = computer
+#    end
+   # def name
+   #   @name
+   # end
+#   def computer_player
+#     @computer
+#   end
+ end
