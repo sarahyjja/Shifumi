@@ -31,7 +31,7 @@ class Game
   end
 
   def start
-    puts "SHIFUMI"
+    @output.puts "SHIFUMI"
     puts "Set up 2 players."
     name = @input.gets.chomp
     puts "#{name} is player 1"
@@ -70,15 +70,9 @@ class Game
     end
   end
 
-  def get_a_random_move(length)
-    objects = "rock", "paper", "scissors"
-    the_move = []
-    length do
-      r = rand 0..2
-      object_move = objects[r]
-      the_move.push(object_move)
-    end
-    result = the_move
+  def get_a_random_move
+    objects = ["rock", "paper", "scissors"]
+    objects.sample
   end
 
   def winning_move(moves)
@@ -117,4 +111,10 @@ require 'player'
 #   def computer_player
 #     @computer
 #   end
+ end
+
+ class SetUp
+  def create_players(game_mode_choice, player1_name, player2_name)
+
+  end
  end

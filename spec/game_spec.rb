@@ -223,7 +223,7 @@ RSpec.describe Game do
     expect(game.player2.name).to eq("Jean")
   end
 
-  it 'do human player1 play rock and computer play random choice' do
+  it 'do computer play random choice' do
     player1 = Player.new("Bob")
     player2 = Computer.new("Jean")
 
@@ -232,14 +232,25 @@ RSpec.describe Game do
 
     game = Game.new(player1, player2, input = $stdin, output = $stdout)
 
-    player1 = game.convert_input_to_move
-    player2 = game.get_a_random_move(rand)
+    expect(game.get_a_random_move).to eq("rock").or(eq("paper")).or(eq("scissors"))
 
-    moves = ["rock", rand]
-    result = game.winning_move(moves)
+  end
 
-    #expect(rock).to eq(["rock"])
-    expect(1.upto(1).get_a_random_move).to eq([rand])
-    expect(winning_move).to eq(result)
+  it 'creates human player and computer player' do
+
+    set_up = SetUp.new
+    game_mode_choice = 2
+
+    player1_name= "Bob"
+    player2_name = "Annie"
+
+    #players are going to return an array of players e.g. [Player.new(player1_name), Computer.new()]
+
+    players = set_up.create_players(game_mode_choice, player1_name, player2_name)
+    player1 = players[0]
+    player2 = players[1]
+
+    expect(player1).should be_kind_of(Player)
+    expect(player2).should be_kind_of(Computer)
   end
 end
