@@ -115,6 +115,6 @@ require 'player'
 
  class SetUp
   def create_players(game_mode_choice, player1_name, player2_name)
-
+    players = [Player.new(@name), Computer.new(@name)]
   end
  end

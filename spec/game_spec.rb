@@ -241,8 +241,8 @@ RSpec.describe Game do
     set_up = SetUp.new
     game_mode_choice = 2
 
-    player1_name= "Bob" 
-    player2_name = "Annie"
+    player1_name= "Bob"
+    player2_name = "Dylan"
 
     #players are going to return an array of players e.g. [Player.new(player1_name), Computer.new()]
 
@@ -250,7 +250,7 @@ RSpec.describe Game do
     player1 = players[0]
     player2 = players[1]
 
-    expect(player1).should be_kind_of(Player)
-    expect(player2).should be_kind_of(Computer)
+    expect(player1).to be_a(Player)
+    expect(player2).to be_a(Computer)
   end
 end
