@@ -6,7 +6,7 @@ $: << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'game'
 require 'player'
 
-player1 = Player.new("Player 1")
+player1 = Player.new("Player 1") || player1 = Computer.new("Computer")
 player2 = Player.new("Player 2") || player2 = Computer.new("Computer")
 game = Game.new(player1, player2, input = $stdin, output = $stdout)
 game.start_new_game

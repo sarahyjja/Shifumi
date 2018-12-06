@@ -242,7 +242,7 @@ RSpec.describe Game do
     game_mode_choice = 2
 
     player1_name= "Bob"
-    player2_name = "Dylan"
+    player2_name = "Comput"
 
     #players are going to return an array of players e.g. [Player.new(player1_name), Computer.new()]
 
@@ -250,7 +250,39 @@ RSpec.describe Game do
     player1 = players[0]
     player2 = players[1]
 
-    expect(player1).to be_a(Player)
+    expect(player1).to be_a(Human)
+    expect(player2).to be_a(Computer)
+  end
+
+  it 'creates 2 human players' do
+
+    set_up = SetUp.new
+    game_mode_choice = 1
+
+    player1_name= "Bob"
+    player2_name = "Dylan"
+
+    players = set_up.create_players(game_mode_choice, player1_name, player2_name)
+    player1 = players[0]
+    player2 = players[1]
+
+    expect(player1).to be_a(Human)
+    expect(player2).to be_a(Human)
+  end
+
+  xit 'creates 2 computer players' do
+
+    set_up = SetUp.new
+    game_mode_choice = 3
+
+    player1_name= "Bob"
+    player2_name = "Dylan"
+
+    players = set_up.create_players(game_mode_choice, player1_name, player2_name)
+    player1 = players[0]
+    player2 = players[1]
+
+    expect(player1).to be_a(Computer)
     expect(player2).to be_a(Computer)
   end
 end

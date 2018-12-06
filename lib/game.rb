@@ -6,7 +6,6 @@ class Game
     @input = input
     @output = output
     @moves = []
-    #@computer = computer
   end
 
   def player1
@@ -16,10 +15,6 @@ class Game
   def player2
     @player2
   end
-
-  # def computer
-  #   @computer
-  # end
 
   def start_new_game
     start
@@ -63,7 +58,6 @@ class Game
       @moves.push("rock")
     when "z", "m"
       @moves.push("scissors")
-      #return "scissors"
     else
       puts "Not valid"
       convert_input_to_move
@@ -100,21 +94,27 @@ end
 
 require 'player'
  class Computer < Player
-#    def initialize(name)
-#      super
-#       #@name = name
-# #     @computer = computer
-#    end
-   # def name
-   #   @name
-   # end
-#   def computer_player
-#     @computer
-#   end
+
+ end
+require 'player'
+ class Human < Player
+
  end
 
  class SetUp
-  def create_players(game_mode_choice, player1_name, player2_name)
-    players = [Player.new(@name), Computer.new(@name)]
+    def create_players(game_mode_choice, player1_name, player2_name)
+      #players = [Human.new(player1_name || player2_name), Computer.new(player1_name || player2_name)]
+      if [player1_name == Human && player2_name == Human]
+        return players = game_mode_choice(1)
+      elsif [player1_name == Human && player2_name == Computer]
+        return game_mode_choice(2)
+      elsif [player1_name == Computer && player2_name == Computer]
+        return game_mode_choice(3)
+      end
+    end
+    def game_mode_choice(players)
+      1 == [Human.new(player1_name), Human.new(player2_name)]
+      2 == [Human.new(player1_name), Computer.new(player2_name)]
+      3 == [Computer.new(player1_name), Computer.new(player2_name)]
+    end
   end
- end
