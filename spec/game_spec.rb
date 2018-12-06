@@ -241,7 +241,7 @@ RSpec.describe Game do
     set_up = SetUp.new
     game_mode_choice = 2
 
-    player1_name= "Bob"
+    player1_name= "Bob" 
     player2_name = "Annie"
 
     #players are going to return an array of players e.g. [Player.new(player1_name), Computer.new()]
