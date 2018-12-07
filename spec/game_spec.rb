@@ -138,7 +138,7 @@ RSpec.describe Game do
 
     game = Game.new(player1, player2)
 
-    paper = game.convert_input_to_move
+    paper = game.convert_input_to_move("q")
 
     expect(paper).to eq(["paper"])
   end
@@ -149,7 +149,7 @@ RSpec.describe Game do
 
     game = Game.new(player1, player2)
 
-    paper = game.convert_input_to_move
+    paper = game.convert_input_to_move("p")
 
     expect(paper).to eq(["paper"])
   end
@@ -160,7 +160,7 @@ RSpec.describe Game do
 
     game = Game.new(player1, player2)
 
-    rock = game.convert_input_to_move
+    rock = game.convert_input_to_move("a")
 
     expect(rock).to eq(["rock"])
   end
@@ -171,7 +171,7 @@ RSpec.describe Game do
 
     game = Game.new(player1, player2)
 
-    rock = game.convert_input_to_move
+    rock = game.convert_input_to_move("l")
 
     expect(rock).to eq(["rock"])
   end
@@ -182,7 +182,7 @@ RSpec.describe Game do
 
     game = Game.new(player1, player2)
 
-    scissors = game.convert_input_to_move
+    scissors = game.convert_input_to_move("z")
 
     expect(scissors).to eq(["scissors"])
   end
@@ -193,21 +193,20 @@ RSpec.describe Game do
 
     game = Game.new(player1, player2)
 
-    scissors = game.convert_input_to_move
-    #game.convert_input_to_move
+    scissors = game.convert_input_to_move("m")
+
     expect(scissors).to eq(["scissors"])
-    #expect(game.moves).include?("scissors")
   end
 
-  it 'return invalid message for invalid choice' do
+  xit 'return invalid message for invalid choice' do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
     game = Game.new(player1, player2)
 
-    invalid_choice = game.convert_input_to_move
+    invalid_choice = game.convert_input_to_move("7")
 
-    expect(invalid_choice).to eq(["Not the right key"])
+    expect(invalid_choice).to eq("7")
   end
 
   it 'add a computer player' do
@@ -224,8 +223,73 @@ RSpec.describe Game do
   end
 
   it 'do computer play random choice' do
-    player1 = Player.new("Bob")
     player2 = Computer.new("Jean")
+
+    input = StringIO.new
+    output = StringIO.new
+
+    expect(player2.make_move).to eq("rock").or(eq("paper")).or(eq("scissors"))
+  end
+
+  it 'creates 2 human players' do
+
+    set_up = SetUp.new
+    game_mode_choice = "1"
+
+    player1_name = "Bob"
+    player2_name = "Dylan"
+
+    players = set_up.game_mode_choice(game_mode_choice, player1_name, player2_name)
+    player1 = players[0]
+    player2 = players[1]
+
+    expect(player1).to be_a(Human)
+    expect(player2).to be_a(Human)
+  end
+
+  it 'creates human player and computer player' do
+
+    set_up = SetUp.new
+    game_mode_choice = "2"
+
+    player1_name = "Bob"
+    player2_name = "Comput"
+
+    players = set_up.game_mode_choice(game_mode_choice, player1_name, player2_name)
+    player1 = players[0]
+    player2 = players[1]
+
+    expect(player1).to be_a(Human)
+    expect(player2).to be_a(Computer)
+  end
+
+  it 'creates 2 computer players' do
+
+    set_up = SetUp.new
+    game_mode_choice = "3"
+
+    player1_name = "Bob"
+    player2_name = "Dylan"
+
+    players = set_up.game_mode_choice(game_mode_choice, player1_name, player2_name)
+    player1 = players[0]
+    player2 = players[1]
+
+    expect(player1).to be_a(Computer)
+    expect(player2).to be_a(Computer)
+  end
+
+  it 'integrate the the whole game' do
+
+    set_up = SetUp.new
+    game_mode_choice = "2"
+
+    player1_name = "Bob"
+    player2_name = "Computer"
+
+    players = set_up.game_mode_choice(game_mode_choice, player1_name, player2_name)
+    player1 = players[0]
+    player2 = players[1]
 
     input = StringIO.new
     output = StringIO.new
@@ -234,55 +298,5 @@ RSpec.describe Game do
 
     expect(game.get_a_random_move).to eq("rock").or(eq("paper")).or(eq("scissors"))
 
-  end
-
-  it 'creates human player and computer player' do
-
-    set_up = SetUp.new
-    game_mode_choice = 2
-
-    player1_name= "Bob"
-    player2_name = "Comput"
-
-    #players are going to return an array of players e.g. [Player.new(player1_name), Computer.new()]
-
-    players = set_up.create_players(game_mode_choice, player1_name, player2_name)
-    player1 = players[0]
-    player2 = players[1]
-
-    expect(player1).to be_a(Human)
-    expect(player2).to be_a(Computer)
-  end
-
-  it 'creates 2 human players' do
-
-    set_up = SetUp.new
-    game_mode_choice = 1
-
-    player1_name= "Bob"
-    player2_name = "Dylan"
-
-    players = set_up.create_players(game_mode_choice, player1_name, player2_name)
-    player1 = players[0]
-    player2 = players[1]
-
-    expect(player1).to be_a(Human)
-    expect(player2).to be_a(Human)
-  end
-
-  xit 'creates 2 computer players' do
-
-    set_up = SetUp.new
-    game_mode_choice = 3
-
-    player1_name= "Bob"
-    player2_name = "Dylan"
-
-    players = set_up.create_players(game_mode_choice, player1_name, player2_name)
-    player1 = players[0]
-    player2 = players[1]
-
-    expect(player1).to be_a(Computer)
-    expect(player2).to be_a(Computer)
   end
 end

@@ -25,6 +25,7 @@ class Game
     winning_move(@moves)
   end
 
+# this function could be called set_up_players
   def start
     @output.puts "SHIFUMI"
     puts "Set up 2 players."
@@ -37,9 +38,9 @@ class Game
     puts "Lets start the game!"
   end
 
-  def input
-    @input.gets.chomp
-  end
+   def human_input
+     @input.gets.chomp
+   end
 
   def ask_for_move(player)
     puts "#{player}"
@@ -49,8 +50,7 @@ class Game
     puts "Z or M for scissors"
   end
 
-  def convert_input_to_move
-    choice = $stdin.gets.chomp
+  def convert_input_to_move(choice)
     case choice
     when "q", "p"
       @moves.push("paper")
@@ -60,14 +60,14 @@ class Game
       @moves.push("scissors")
     else
       puts "Not valid"
-      convert_input_to_move
+      convert_input_to_move(choice)
     end
   end
 
-  def get_a_random_move
-    objects = ["rock", "paper", "scissors"]
-    objects.sample
-  end
+#def get_a_random_move
+#    objects = ["rock", "paper", "scissors"]
+#    objects.sample
+#  end
 
   def winning_move(moves)
     if moves.include?("paper") && moves.include?("rock")
@@ -95,26 +95,48 @@ end
 require 'player'
  class Computer < Player
 
+   def make_move
+     objects = ["rock", "paper", "scissors"]
+     objects.sample
+   end
  end
+
 require 'player'
  class Human < Player
 
+   def make_move
+     @input.gets.chomp
+   end
  end
 
  class SetUp
-    def create_players(game_mode_choice, player1_name, player2_name)
-      #players = [Human.new(player1_name || player2_name), Computer.new(player1_name || player2_name)]
-      if [player1_name == Human && player2_name == Human]
-        return players = game_mode_choice(1)
-      elsif [player1_name == Human && player2_name == Computer]
-        return game_mode_choice(2)
-      elsif [player1_name == Computer && player2_name == Computer]
-        return game_mode_choice(3)
-      end
-    end
-    def game_mode_choice(players)
-      1 == [Human.new(player1_name), Human.new(player2_name)]
-      2 == [Human.new(player1_name), Computer.new(player2_name)]
-      3 == [Computer.new(player1_name), Computer.new(player2_name)]
-    end
+   # this prompts for the SetUp
+   def ask_for_game_mode
+     gets.chomp
+   end
+
+   def game_mode_choice(mode_choice, player1_name, player2_name)
+     case mode_choice
+       when "1"
+         human_vs_human(player1_name, player2_name)
+       when "2"
+         human_vs_computer(player1_name, player2_name)
+       when "3"
+         computer_vs_computer(player1_name, player2_name)
+       else
+         "Invalid mode"
+     end
+   end
+
+   def human_vs_human(player1_name, player2_name)
+     [Human.new(player1_name), Human.new(player2_name)]
+   end
+
+   def human_vs_computer(player1_name, player2_name)
+     [Human.new(player1_name), Computer.new(player2_name)]
+   end
+
+   def computer_vs_computer(player1_name, player2_name)
+     [Computer.new(player1_name), Computer.new(player2_name)]
+   end
   end
