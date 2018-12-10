@@ -1,14 +1,19 @@
 class Player
   def initialize(name)
     @name = name
+    @player1 = player1
+    @player2 = player2
   end
 
   def name
-    #name = @input.gets.chomp
     @name
   end
 
-  # def make_move
-  #   @input.gets.chomp
-  # end
+  def player1
+    @player1
+  end
+
+  def player2
+    @player2
+  end
 end

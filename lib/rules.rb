@@ -1,36 +1,17 @@
-
 class Rules
-  def initialize(player1, player2, input = $stdin, output = $stdout)
-    @player1 = player1
-    @player2 = player2
+  def initialize(setup, input = $stdin, output = $stdout)
+    @setup = setup
     @input = input
     @output = output
     @moves = []
-  end
-
-  def player1
-    @player1
-  end
-
-  def player2
-    @player2
   end
 
   def input
     @input
   end
 
-  def play
-    ask_for_game_mode
-    setup_players
-    ask_for_move(@player1)
-    make_move
-    convert_input_to_move
-    ask_for_move(@player2)
-    make_move
-    convert_input_to_move
-    winning_move(@moves)
-
+  def setup
+    @setup
   end
 
   def ask_for_move(player)
@@ -50,8 +31,8 @@ class Rules
     when "z", "m"
       @moves.push("scissors")
     else
-      puts "Not valid"
-      convert_input_to_move(choice)
+      return "Not valid"
+      #convert_input_to_move(choice)
     end
   end
 
@@ -77,35 +58,3 @@ class Rules
     end
   end
 end
-
-
-
-# def start_new_game
-# start
-# ask_for_move(@player1)
-# convert_input_to_move
-# ask_for_move(@player2)
-# convert_input_to_move
-# winning_move(@moves)
-# end
-#
-# def human_input
-# @input.gets.chomp
-# end
-#
-# def get_a_random_move
-# objects = ["rock", "paper", "scissors"]
-# objects.sample
-# end
-#
-# def start
-# @output.puts "SHIFUMI"
-# puts "Set up 2 players."
-# name = @input.gets.chomp
-# puts "#{name} is player 1"
-# @player1 = name
-# name = @input.gets.chomp
-# @player2 = name
-# puts "#{name} is player 2"
-# puts "Lets start the game!"
-# end
