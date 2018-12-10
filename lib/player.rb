@@ -4,10 +4,11 @@ class Player
   end
 
   def name
+    #name = @input.gets.chomp
     @name
   end
 
-  def make_move
-    @input.gets.chomp
-  end
+  # def make_move
+  #   @input.gets.chomp
+  # end
 end

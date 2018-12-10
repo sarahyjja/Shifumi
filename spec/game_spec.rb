@@ -1,22 +1,24 @@
-require 'game'
+require 'rules'
 require 'player'
 require 'stringio'
-#require 'computer'
+require 'setup'
+require 'computer'
+require 'human'
 
-RSpec.describe Game do
+RSpec.describe Rules do
 
-  it 'has two players with names' do
-    player1 = Player.new("Bob")
-    player2 = Player.new("Cindy")
-
-    input = StringIO.new
-    output = StringIO.new
-
-    game = Game.new(player1, player2, input, output)
-
-    expect(game.player1.name).to eq("Bob")
-    expect(game.player2.name).to eq("Cindy")
-  end
+  # it 'has two players with names' do
+  #   player1 = Player.new("Bob")
+  #   player2 = Player.new("Cindy")
+  #
+  #   input = StringIO.new
+  #   output = StringIO.new
+  #
+  #   game = Rules.new(player1, player2, input, output)
+  #
+  #   expect(game.player1.name).to eq("Bob")
+  #   expect(game.player2.name).to eq("Cindy")
+  # end
 
   it 'says paper win against rock' do
     player1 = Player.new("Bob")
@@ -25,7 +27,7 @@ RSpec.describe Game do
     # input = StringIO.new
     # output = StringIO.new
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     moves = ["paper", "rock"]
     winning_move = game.winning_move(moves)
@@ -40,7 +42,7 @@ RSpec.describe Game do
     # input = StringIO.new
     # output = StringIO.new
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     moves = ["scissors", "rock"]
     winning_move = game.winning_move(moves)
@@ -52,7 +54,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     moves = ["scissors", "paper"]
     winning_move = game.winning_move(moves)
@@ -64,7 +66,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     moves = ["paper", "paper"]
     winning_move = game.winning_move(moves)
@@ -76,7 +78,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     moves = ["rock", "rock"]
     winning_move = game.winning_move(moves)
@@ -88,7 +90,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     moves = ["scissors", "scissors"]
     winning_move = game.winning_move(moves)
@@ -100,7 +102,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     moves = ["rock", "scissors"]
     winning_move = game.winning_move(moves)
@@ -112,7 +114,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     moves = ["scissors", "paper"]
     winning_move = game.winning_move(moves)
@@ -124,7 +126,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     moves = ["scissors", "scissors"]
     winning_move = game.winning_move(moves)
@@ -136,7 +138,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     paper = game.convert_input_to_move("q")
 
@@ -147,7 +149,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     paper = game.convert_input_to_move("p")
 
@@ -158,7 +160,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     rock = game.convert_input_to_move("a")
 
@@ -169,7 +171,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     rock = game.convert_input_to_move("l")
 
@@ -180,7 +182,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     scissors = game.convert_input_to_move("z")
 
@@ -191,7 +193,7 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     scissors = game.convert_input_to_move("m")
 
@@ -202,11 +204,11 @@ RSpec.describe Game do
     player1 = Player.new("Bob")
     player2 = Player.new("Cindy")
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     invalid_choice = game.convert_input_to_move("7")
 
-    expect(invalid_choice).to eq("7")
+    expect(invalid_choice).to eq("Not valid")
   end
 
   it 'add a computer player' do
@@ -216,7 +218,7 @@ RSpec.describe Game do
     # input = StringIO.new
     # output = StringIO.new
 
-    game = Game.new(player1, player2)
+    game = Rules.new(player1, player2)
 
     expect(game.player1.name).to eq("Bob")
     expect(game.player2.name).to eq("Jean")
@@ -279,7 +281,7 @@ RSpec.describe Game do
     expect(player2).to be_a(Computer)
   end
 
-  it 'integrate the the whole game' do
+  xit 'integrate the the whole game' do
 
     set_up = SetUp.new
     game_mode_choice = "2"
@@ -294,7 +296,7 @@ RSpec.describe Game do
     input = StringIO.new
     output = StringIO.new
 
-    game = Game.new(player1, player2, input = $stdin, output = $stdout)
+    game = Rules.new(player1, player2, input = $stdin, output = $stdout)
 
     expect(game.get_a_random_move).to eq("rock").or(eq("paper")).or(eq("scissors"))
 
