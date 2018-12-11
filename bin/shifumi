@@ -3,12 +3,7 @@
 # Allows you to require any file in lib
 $: << File.join(File.dirname(__FILE__), '..', 'lib')
 
-require 'rules'
-require 'player'
-require 'stringio'
 require 'setup'
-require 'computer'
-require 'human'
 require 'game'
 
 setup = SetUp.new

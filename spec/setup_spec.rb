@@ -1,7 +1,6 @@
 require 'stringio'
 require 'setup'
 require 'rules'
-require 'player'
 require 'computer'
 require 'human'
 require 'game'
@@ -13,8 +12,8 @@ RSpec.describe SetUp do
     setup = SetUp.new
     game_mode_choice = "1"
 
-    player1 = Player.new("Bob")
-    player2 = Player.new("Dylan")
+    player1 = Human.new("Bob")
+    player2 = Human.new("Dylan")
 
     players = setup.game_mode_choice(game_mode_choice, player1, player2)
     player1 = players[0]

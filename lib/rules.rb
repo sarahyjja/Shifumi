@@ -1,13 +1,7 @@
 class Rules
-  def initialize(setup, input = $stdin, output = $stdout)
+  def initialize(setup)
     @setup = setup
-    @input = input
-    @output = output
     @moves = []
-  end
-
-  def input
-    @input
   end
 
   def setup

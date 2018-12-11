@@ -1,7 +1,6 @@
 require 'stringio'
 require 'setup'
 require 'rules'
-require 'player'
 require 'computer'
 require 'human'
 require 'game'
@@ -12,7 +11,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     moves = ["paper", "rock"]
     winning_move = game.winning_move(moves)
@@ -24,7 +23,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     moves = ["scissors", "rock"]
     winning_move = game.winning_move(moves)
@@ -36,7 +35,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     moves = ["scissors", "paper"]
     winning_move = game.winning_move(moves)
@@ -48,7 +47,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     moves = ["paper", "paper"]
     winning_move = game.winning_move(moves)
@@ -60,7 +59,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     moves = ["rock", "rock"]
     winning_move = game.winning_move(moves)
@@ -72,7 +71,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     moves = ["scissors", "scissors"]
     winning_move = game.winning_move(moves)
@@ -84,7 +83,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     moves = ["rock", "scissors"]
     winning_move = game.winning_move(moves)
@@ -96,7 +95,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     moves = ["scissors", "paper"]
     winning_move = game.winning_move(moves)
@@ -108,7 +107,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     moves = ["scissors", "scissors"]
     winning_move = game.winning_move(moves)
@@ -120,7 +119,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     paper = game.convert_input_to_move("q")
 
@@ -131,7 +130,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     paper = game.convert_input_to_move("p")
 
@@ -142,7 +141,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     rock = game.convert_input_to_move("a")
 
@@ -153,7 +152,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     rock = game.convert_input_to_move("l")
 
@@ -164,7 +163,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     scissors = game.convert_input_to_move("z")
 
@@ -175,7 +174,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     scissors = game.convert_input_to_move("m")
 
@@ -186,7 +185,7 @@ RSpec.describe Rules do
     input = StringIO.new
     output = StringIO.new
     setup = SetUp.new
-    game = Rules.new(setup, input, output)
+    game = Rules.new(setup)
 
     invalid_choice = game.convert_input_to_move("f")
 
