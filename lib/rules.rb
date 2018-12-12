@@ -1,11 +1,6 @@
 class Rules
-  def initialize(setup)
-    @setup = setup
+  def initialize
     @moves = []
-  end
-
-  def setup
-    @setup
   end
 
   def ask_for_move(player)
@@ -16,39 +11,19 @@ class Rules
     puts "Z or M for scissors"
   end
 
-  def convert_input_to_move(choice)
-    case choice
-    when "q", "p"
-      @moves.push("paper")
-    when "a", "l"
-      @moves.push("rock")
-    when "z", "m"
-      @moves.push("scissors")
-    else
-      return "Not valid"
-      #convert_input_to_move(choice)
-    end
+  def make_move(player)
+    player.make_move
   end
 
-  def winning_move(moves)
-    if moves.include?("paper") && moves.include?("rock")
-      puts "Paper wins\n"
-      return "Paper wins\n"
-    elsif moves.include?("scissors") && moves.include?("rock")
-       puts "Rock wins\n"
-      return "Rock wins\n"
-    elsif moves.include?("scissors") && moves.include?("paper")
-      puts "Scissors wins\n"
-      return "Scissors wins\n"
-    elsif moves.include?("paper") && moves.include?("paper")
-      puts "Draw! No winner\n"
-      return "Draw! No winner\n"
-    elsif moves.include?("rock") && moves.include?("rock")
-      puts "Draw! No winner\n"
-      return "Draw! No winner\n"
-    elsif moves.include?("scissors") && moves.include?("scissors")
-      puts "Draw! No winner\n"
-      return "Draw! No winner\n"
+  def winning_move(move_player_1, move_player_2)
+    if move_player_1 == "paper" && move_player_2 == "rock"
+      "paper"
+    elsif move_player_1 == "scissors" && move_player_2 == "rock"
+      "rock"
+    elsif move_player_1 == "scissors" && move_player_2 == "paper"
+      "scissors"
+    else
+      nil
     end
   end
 end

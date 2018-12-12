@@ -10,14 +10,23 @@ class Game
   end
 
   def play
-    @setup.start
-    player_1, player_2 = @setup.create_players
+    rules = Rules.new
+    @setup.welcome_message
+    mode_choice = @setup.get_mode_choice
+    player_1, player_2 = @setup.create_players(mode_choice)
 
-    move_player_1 = player_1.make_move
-    move_player_2 = player_2.make_move
+    rules.ask_for_move(player_1)
+    move_player_1 = rules.make_move(player_1)
+    rules.ask_for_move(player_2)
+    move_player_2 = rules.make_move(player_2)
 
-    winner = get_winner(move_player_1, move_player_2)
-    puts winner
+    winner = rules.winning_move(move_player_1, move_player_2)
+    
+    if winner
+      puts "#{winner} you win!"
+    else
+      puts "Tie!"
+    end
   end
 end
 
