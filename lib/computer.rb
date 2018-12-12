@@ -15,7 +15,8 @@ require 'move_randomizer'
    end
 
   def create_player_name
-    @name = "Computer"
+  puts "Please enter computer name : "
+    @name = gets.chomp
   end
 
    def make_move

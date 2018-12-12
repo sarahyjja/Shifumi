@@ -36,7 +36,6 @@ class SetUp
     player1_name = gets.chomp
     puts "Player 2 give me your name :"
     player2_name = gets.chomp
-    # game_mode_choice(mode_choice, player1_name, player2_name)
   end
 
   def display_player_name(player1_name, player2_name)
