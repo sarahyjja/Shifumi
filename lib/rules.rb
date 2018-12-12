@@ -4,26 +4,29 @@ class Rules
   end
 
   def ask_for_move(player)
-    puts "#{player} it's your turn!"
+    puts "#{player.name} it's your turn!"
     puts "Choose in between :"
     puts "Q or P for paper"
     puts "A or L for rock"
     puts "Z or M for scissors"
   end
 
-  def make_move(player)
-    player.make_move
-  end
-
-  def winning_move(move_player_1, move_player_2)
-    if move_player_1 == "paper" && move_player_2 == "rock"
-      "paper"
-    elsif move_player_1 == "scissors" && move_player_2 == "rock"
-      "rock"
-    elsif move_player_1 == "scissors" && move_player_2 == "paper"
-      "scissors"
+  def results(player_1, player_2)
+    if player_1.move == "paper" && player_2.move == "rock"
+      { :winner => player_1, :loser => player_2 }
+    elsif player_1.move == "rock" && player_2.move == "scissors"
+      { :winner => player_1, :loser => player_2 }
+    elsif player_1.move == "scissors" && player_2.move == "paper"
+      { :winner => player_1, :loser => player_2 }
+    elsif player_2.move == "paper" && player_1.move == "rock"
+      { :winner => player_2, :loser => player_1 }
+    elsif player_2.move == "rock" && player_1.move == "scissors"
+      { :winner => player_2, :loser => player_1 }
+    elsif player_2.move == "scissors" && player_1.move == "paper"
+      { :winner => player_2, :loser => player_1 }
     else
       nil
     end
+
   end
 end

@@ -1,20 +1,25 @@
  class Human
-   def initialize(input = $stdin, output = $stdout)
-     @input = input
-     @output = output
-   end
+    def initialize
+      @name = ""
+      @move = ""
+    end
 
-   def input
-     @input
-   end
+    def name
+      @name
+    end
 
-   def output
-     @output
+    def move
+      @move 
+    end
+
+   def create_player_name
+     puts "Please enter your name : "
+     @name = gets.chomp
    end
 
    def make_move
      valid_input = get_player_input
-     convert_input_to_move(valid_input)
+     @move = convert_input_to_move(valid_input)
    end
 
    def convert_input_to_move(valid_input)

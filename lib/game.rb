@@ -15,15 +15,22 @@ class Game
     mode_choice = @setup.get_mode_choice
     player_1, player_2 = @setup.create_players(mode_choice)
 
-    rules.ask_for_move(player_1)
-    move_player_1 = rules.make_move(player_1)
-    rules.ask_for_move(player_2)
-    move_player_2 = rules.make_move(player_2)
+    player_1.create_player_name
+    player_2.create_player_name
 
-    winner = rules.winning_move(move_player_1, move_player_2)
+    rules.ask_for_move(player_1)
+    player_1.make_move
+
+    rules.ask_for_move(player_2)
+    player_2.make_move
+
+    results = rules.winner(player_1, player_2)
+    winner = results[:winner]
+    loser = results[:loser]
 
     if winner
-      puts "#{winner} you win!"
+      puts "#{winner.name} you win with #{winner.move}!"
+      puts "#{loser.name} you lose with #{loser.move}"
     else
       puts "Tie!"
     end
