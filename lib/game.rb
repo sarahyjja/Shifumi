@@ -24,7 +24,7 @@ class Game
     rules.ask_for_move(player_2)
     player_2.make_move
 
-    results = rules.winner(player_1, player_2)
+    results = rules.results(player_1, player_2)
     winner = results[:winner]
     loser = results[:loser]
 
