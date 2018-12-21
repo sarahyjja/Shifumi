@@ -1,4 +1,4 @@
- class Human
+  class Human
     def initialize
       @name = ""
       @move = ""
@@ -9,7 +9,7 @@
     end
 
     def move
-      @move 
+      @move
     end
 
    def create_player_name

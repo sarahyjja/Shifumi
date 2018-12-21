@@ -1,6 +1,6 @@
 class Rules
   def initialize
-     @moves = []
+   @moves = []
   end
 
   def ask_for_move(player)
